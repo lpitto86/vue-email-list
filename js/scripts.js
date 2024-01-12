@@ -14,12 +14,15 @@ createApp({
             };
       },
       mounted() {
-            axsios.get(this.url)
-            .then(response => {
-                  this.emails = response.data.response;
+            axios.get(this.url)
+                  .then(response => {
+                        this.emails = response.data.response;
                   })
                   .catch(error => {
                         console.error('Errore nella richiesta API', error);
+                  })
+                  .finally(() => {
+                        console.log('Mounted hook completed');
                   });
       }
 }).mount('#app');
